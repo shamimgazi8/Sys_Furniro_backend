@@ -1,7 +1,7 @@
 import { QueryHandler, IQueryHandler } from "@nestjs/cqrs";
 import { UsersService } from "../../../users/users.service"
 import { ValidateUserQuery } from ".."
-import * as bcrypt from "bcrypt";
+import * as bcrypt from "bcryptjs";
 
 @QueryHandler(ValidateUserQuery)
 export class ValidateUserHandler implements IQueryHandler<ValidateUserQuery> {

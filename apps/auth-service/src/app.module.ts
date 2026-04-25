@@ -5,6 +5,7 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { AuthModule } from "./auth/auth.module";
 import { UsersModule } from "./users/users.module";
+import { User } from "./users/entities/user.entity";
 
 @Module({
   imports: [
@@ -19,7 +20,8 @@ import { UsersModule } from "./users/users.module";
       username: process.env.DB_USERNAME || "postgres",
       password: process.env.DB_PASSWORD || "password",
       database: process.env.DB_NAME || "furniro",
-      entities: [__dirname + "/**/*.entity{.ts,.js}"],
+      entities: [User],
+      autoLoadEntities: true,
       synchronize: true,
       logging: process.env.NODE_ENV === "development",
     }),

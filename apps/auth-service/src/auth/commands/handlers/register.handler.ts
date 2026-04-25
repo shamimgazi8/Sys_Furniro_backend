@@ -1,7 +1,8 @@
 import { CommandHandler, ICommandHandler } from "@nestjs/cqrs";
 import { UsersService } from "../../../users/users.service"
 import { RegisterCommand } from ".."
-import * as bcrypt from "bcrypt";
+import * as bcrypt from "bcryptjs";
+import { UserRole } from "@furniro/common";
 
 @CommandHandler(RegisterCommand)
 export class RegisterHandler implements ICommandHandler<RegisterCommand> {

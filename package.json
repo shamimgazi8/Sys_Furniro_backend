@@ -26,6 +26,10 @@
   "license": "ISC",
   "packageManager": "pnpm@10.33.2",
   "devDependencies": {
-    "concurrently": "^9.2.1"
+    "@nestjs/cli": "^10.4.9",
+    "@nestjs/schematics": "^10.2.3",
+    "concurrently": "^9.2.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
   }
 }

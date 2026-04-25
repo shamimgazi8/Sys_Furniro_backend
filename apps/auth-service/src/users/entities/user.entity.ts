@@ -5,6 +5,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from "typeorm";
+import { UserRole } from "@furniro/common";
 
 @Entity("users")
 export class User {
@@ -20,8 +21,12 @@ export class User {
   @Column()
   name: string;
 
-  @Column({ default: "user" })
-  role: string;
+  @Column({
+    type: "enum",
+    enum: UserRole,
+    default: UserRole.CUSTOMER,
+  })
+  role: UserRole;
 
   @Column({ nullable: true })
   phone: string;

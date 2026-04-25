@@ -6,7 +6,7 @@ import { ProductsController } from "./products.controller";
   imports: [
     HttpModule.registerAsync({
       useFactory: () => ({
-        baseURL: process.env.PRODUCT_SERVICE_URL || "http://localhost:3002",
+        baseURL: process.env.PRODUCT_SERVICE_URL || "http://localhost:8002",
         timeout: 5000,
       }),
     }),

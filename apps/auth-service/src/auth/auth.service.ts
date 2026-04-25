@@ -2,6 +2,7 @@ import { Injectable, UnauthorizedException } from "@nestjs/common";
 import { CommandBus, QueryBus } from "@nestjs/cqrs";
 import { LoginCommand, RegisterCommand } from "./commands";
 import { ValidateUserQuery } from "./queries";
+import { UserRole } from "./enums/user-role.enum";
 
 @Injectable()
 export class AuthService {

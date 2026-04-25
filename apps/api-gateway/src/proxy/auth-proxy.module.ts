@@ -6,7 +6,7 @@ import { AuthController } from "./auth.controller";
   imports: [
     HttpModule.registerAsync({
       useFactory: () => ({
-        baseURL: process.env.AUTH_SERVICE_URL || "http://localhost:3001",
+        baseURL: process.env.AUTH_SERVICE_URL || "http://localhost:8001",
         timeout: 5000,
       }),
     }),

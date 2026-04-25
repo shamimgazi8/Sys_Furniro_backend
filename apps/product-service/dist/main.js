@@ -1,55 +1,26 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
-/******/ 	var __webpack_modules__ = ({
+/******/ 	var __webpack_modules__ = ([
+/* 0 */,
+/* 1 */
+/***/ ((module) => {
 
-/***/ "./src/app.controller.ts":
-/*!*******************************!*\
-  !*** ./src/app.controller.ts ***!
-  \*******************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var _a;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AppController = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const app_service_1 = __webpack_require__(/*! ./app.service */ "./src/app.service.ts");
-let AppController = class AppController {
-    constructor(appService) {
-        this.appService = appService;
-    }
-    getHello() {
-        return "Product Service is running!";
-    }
-};
-exports.AppController = AppController;
-__decorate([
-    (0, common_1.Get)(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", String)
-], AppController.prototype, "getHello", null);
-exports.AppController = AppController = __decorate([
-    (0, common_1.Controller)(),
-    __metadata("design:paramtypes", [typeof (_a = typeof app_service_1.AppService !== "undefined" && app_service_1.AppService) === "function" ? _a : Object])
-], AppController);
-
+module.exports = require("@nestjs/core");
 
 /***/ }),
+/* 2 */
+/***/ ((module) => {
 
-/***/ "./src/app.module.ts":
-/*!***************************!*\
-  !*** ./src/app.module.ts ***!
-  \***************************/
+module.exports = require("@nestjs/common");
+
+/***/ }),
+/* 3 */
+/***/ ((module) => {
+
+module.exports = require("@nestjs/swagger");
+
+/***/ }),
+/* 4 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -61,12 +32,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.AppModule = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const config_1 = __webpack_require__(/*! @nestjs/config */ "@nestjs/config");
-const typeorm_1 = __webpack_require__(/*! @nestjs/typeorm */ "@nestjs/typeorm");
-const app_controller_1 = __webpack_require__(/*! ./app.controller */ "./src/app.controller.ts");
-const app_service_1 = __webpack_require__(/*! ./app.service */ "./src/app.service.ts");
-const products_module_1 = __webpack_require__(/*! ./products/products.module */ "./src/products/products.module.ts");
+const common_1 = __webpack_require__(2);
+const config_1 = __webpack_require__(5);
+const typeorm_1 = __webpack_require__(6);
+const app_controller_1 = __webpack_require__(7);
+const app_service_1 = __webpack_require__(8);
+const products_module_1 = __webpack_require__(9);
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -97,11 +68,59 @@ exports.AppModule = AppModule = __decorate([
 
 
 /***/ }),
+/* 5 */
+/***/ ((module) => {
 
-/***/ "./src/app.service.ts":
-/*!****************************!*\
-  !*** ./src/app.service.ts ***!
-  \****************************/
+module.exports = require("@nestjs/config");
+
+/***/ }),
+/* 6 */
+/***/ ((module) => {
+
+module.exports = require("@nestjs/typeorm");
+
+/***/ }),
+/* 7 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AppController = void 0;
+const common_1 = __webpack_require__(2);
+const app_service_1 = __webpack_require__(8);
+let AppController = class AppController {
+    constructor(appService) {
+        this.appService = appService;
+    }
+    getHello() {
+        return "Product Service is running!";
+    }
+};
+exports.AppController = AppController;
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", String)
+], AppController.prototype, "getHello", null);
+exports.AppController = AppController = __decorate([
+    (0, common_1.Controller)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof app_service_1.AppService !== "undefined" && app_service_1.AppService) === "function" ? _a : Object])
+], AppController);
+
+
+/***/ }),
+/* 8 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -113,7 +132,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.AppService = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const common_1 = __webpack_require__(2);
 let AppService = class AppService {
     getHello() {
         return "Product Service is running!";
@@ -126,11 +145,61 @@ exports.AppService = AppService = __decorate([
 
 
 /***/ }),
+/* 9 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-/***/ "./src/products/commands/handlers/create-product.handler.ts":
-/*!******************************************************************!*\
-  !*** ./src/products/commands/handlers/create-product.handler.ts ***!
-  \******************************************************************/
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ProductsModule = void 0;
+const common_1 = __webpack_require__(2);
+const typeorm_1 = __webpack_require__(6);
+const cqrs_1 = __webpack_require__(10);
+const products_service_1 = __webpack_require__(11);
+const products_controller_1 = __webpack_require__(14);
+const product_entity_1 = __webpack_require__(15);
+const get_all_products_handler_1 = __webpack_require__(17);
+const get_product_by_id_handler_1 = __webpack_require__(18);
+const get_products_by_category_handler_1 = __webpack_require__(19);
+const create_product_handler_1 = __webpack_require__(20);
+const update_product_handler_1 = __webpack_require__(21);
+const delete_product_handler_1 = __webpack_require__(22);
+const QueryHandlers = [
+    get_all_products_handler_1.GetAllProductsHandler,
+    get_product_by_id_handler_1.GetProductByIdHandler,
+    get_products_by_category_handler_1.GetProductsByCategoryHandler,
+];
+const CommandHandlers = [
+    create_product_handler_1.CreateProductHandler,
+    update_product_handler_1.UpdateProductHandler,
+    delete_product_handler_1.DeleteProductHandler,
+];
+let ProductsModule = class ProductsModule {
+};
+exports.ProductsModule = ProductsModule;
+exports.ProductsModule = ProductsModule = __decorate([
+    (0, common_1.Module)({
+        imports: [typeorm_1.TypeOrmModule.forFeature([product_entity_1.Product]), cqrs_1.CqrsModule],
+        controllers: [products_controller_1.ProductsController],
+        providers: [products_service_1.ProductsService, ...QueryHandlers, ...CommandHandlers],
+        exports: [products_service_1.ProductsService],
+    })
+], ProductsModule);
+
+
+/***/ }),
+/* 10 */
+/***/ ((module) => {
+
+module.exports = require("@nestjs/cqrs");
+
+/***/ }),
+/* 11 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -143,144 +212,71 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var _a;
+var _a, _b;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CreateProductHandler = void 0;
-const cqrs_1 = __webpack_require__(/*! @nestjs/cqrs */ "@nestjs/cqrs");
-const typeorm_1 = __webpack_require__(/*! @nestjs/typeorm */ "@nestjs/typeorm");
-const typeorm_2 = __webpack_require__(/*! typeorm */ "typeorm");
-const product_entity_1 = __webpack_require__(/*! ../../entities/product.entity */ "./src/products/entities/product.entity.ts");
-const __1 = __webpack_require__(/*! .. */ "./src/products/commands/index.ts");
-let CreateProductHandler = class CreateProductHandler {
-    constructor(productsRepository) {
-        this.productsRepository = productsRepository;
+exports.ProductsService = void 0;
+const common_1 = __webpack_require__(2);
+const cqrs_1 = __webpack_require__(10);
+const queries_1 = __webpack_require__(12);
+const commands_1 = __webpack_require__(13);
+let ProductsService = class ProductsService {
+    constructor(commandBus, queryBus) {
+        this.commandBus = commandBus;
+        this.queryBus = queryBus;
     }
-    async execute(command) {
-        const { data } = command;
-        const product = this.productsRepository.create(data);
-        return this.productsRepository.save(product);
+    async findAll() {
+        return this.queryBus.execute(new queries_1.GetAllProductsQuery());
+    }
+    async findOne(id) {
+        return this.queryBus.execute(new queries_1.GetProductByIdQuery(id));
+    }
+    async findByCategory(category) {
+        return this.queryBus.execute(new queries_1.GetProductsByCategoryQuery(category));
+    }
+    async create(data) {
+        return this.commandBus.execute(new commands_1.CreateProductCommand(data));
+    }
+    async update(id, data) {
+        return this.commandBus.execute(new commands_1.UpdateProductCommand(id, data));
+    }
+    async remove(id) {
+        return this.commandBus.execute(new commands_1.DeleteProductCommand(id));
     }
 };
-exports.CreateProductHandler = CreateProductHandler;
-exports.CreateProductHandler = CreateProductHandler = __decorate([
-    (0, cqrs_1.CommandHandler)(__1.CreateProductCommand),
-    __param(0, (0, typeorm_1.InjectRepository)(product_entity_1.Product)),
-    __metadata("design:paramtypes", [typeof (_a = typeof typeorm_2.Repository !== "undefined" && typeorm_2.Repository) === "function" ? _a : Object])
-], CreateProductHandler);
+exports.ProductsService = ProductsService;
+exports.ProductsService = ProductsService = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof cqrs_1.CommandBus !== "undefined" && cqrs_1.CommandBus) === "function" ? _a : Object, typeof (_b = typeof cqrs_1.QueryBus !== "undefined" && cqrs_1.QueryBus) === "function" ? _b : Object])
+], ProductsService);
 
 
 /***/ }),
-
-/***/ "./src/products/commands/handlers/delete-product.handler.ts":
-/*!******************************************************************!*\
-  !*** ./src/products/commands/handlers/delete-product.handler.ts ***!
-  \******************************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+/* 12 */
+/***/ ((__unused_webpack_module, exports) => {
 
 
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.DeleteProductHandler = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const cqrs_1 = __webpack_require__(/*! @nestjs/cqrs */ "@nestjs/cqrs");
-const typeorm_1 = __webpack_require__(/*! @nestjs/typeorm */ "@nestjs/typeorm");
-const typeorm_2 = __webpack_require__(/*! typeorm */ "typeorm");
-const product_entity_1 = __webpack_require__(/*! ../../entities/product.entity */ "./src/products/entities/product.entity.ts");
-const __1 = __webpack_require__(/*! .. */ "./src/products/commands/index.ts");
-let DeleteProductHandler = class DeleteProductHandler {
-    constructor(productsRepository) {
-        this.productsRepository = productsRepository;
+exports.GetProductsByCategoryQuery = exports.GetProductByIdQuery = exports.GetAllProductsQuery = void 0;
+class GetAllProductsQuery {
+    constructor() { }
+}
+exports.GetAllProductsQuery = GetAllProductsQuery;
+class GetProductByIdQuery {
+    constructor(id) {
+        this.id = id;
     }
-    async execute(command) {
-        const { id } = command;
-        const product = await this.productsRepository.findOne({ where: { id } });
-        if (!product) {
-            throw new common_1.NotFoundException(`Product with ID ${id} not found`);
-        }
-        await this.productsRepository.remove(product);
+}
+exports.GetProductByIdQuery = GetProductByIdQuery;
+class GetProductsByCategoryQuery {
+    constructor(category) {
+        this.category = category;
     }
-};
-exports.DeleteProductHandler = DeleteProductHandler;
-exports.DeleteProductHandler = DeleteProductHandler = __decorate([
-    (0, cqrs_1.CommandHandler)(__1.DeleteProductCommand),
-    __param(0, (0, typeorm_1.InjectRepository)(product_entity_1.Product)),
-    __metadata("design:paramtypes", [typeof (_a = typeof typeorm_2.Repository !== "undefined" && typeorm_2.Repository) === "function" ? _a : Object])
-], DeleteProductHandler);
+}
+exports.GetProductsByCategoryQuery = GetProductsByCategoryQuery;
 
 
 /***/ }),
-
-/***/ "./src/products/commands/handlers/update-product.handler.ts":
-/*!******************************************************************!*\
-  !*** ./src/products/commands/handlers/update-product.handler.ts ***!
-  \******************************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var _a;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UpdateProductHandler = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const cqrs_1 = __webpack_require__(/*! @nestjs/cqrs */ "@nestjs/cqrs");
-const typeorm_1 = __webpack_require__(/*! @nestjs/typeorm */ "@nestjs/typeorm");
-const typeorm_2 = __webpack_require__(/*! typeorm */ "typeorm");
-const product_entity_1 = __webpack_require__(/*! ../../entities/product.entity */ "./src/products/entities/product.entity.ts");
-const __1 = __webpack_require__(/*! .. */ "./src/products/commands/index.ts");
-let UpdateProductHandler = class UpdateProductHandler {
-    constructor(productsRepository) {
-        this.productsRepository = productsRepository;
-    }
-    async execute(command) {
-        const { id, data } = command;
-        const product = await this.productsRepository.findOne({ where: { id } });
-        if (!product) {
-            throw new common_1.NotFoundException(`Product with ID ${id} not found`);
-        }
-        Object.assign(product, data);
-        return this.productsRepository.save(product);
-    }
-};
-exports.UpdateProductHandler = UpdateProductHandler;
-exports.UpdateProductHandler = UpdateProductHandler = __decorate([
-    (0, cqrs_1.CommandHandler)(__1.UpdateProductCommand),
-    __param(0, (0, typeorm_1.InjectRepository)(product_entity_1.Product)),
-    __metadata("design:paramtypes", [typeof (_a = typeof typeorm_2.Repository !== "undefined" && typeorm_2.Repository) === "function" ? _a : Object])
-], UpdateProductHandler);
-
-
-/***/ }),
-
-/***/ "./src/products/commands/index.ts":
-/*!****************************************!*\
-  !*** ./src/products/commands/index.ts ***!
-  \****************************************/
+/* 13 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -308,81 +304,7 @@ exports.DeleteProductCommand = DeleteProductCommand;
 
 
 /***/ }),
-
-/***/ "./src/products/entities/product.entity.ts":
-/*!*************************************************!*\
-  !*** ./src/products/entities/product.entity.ts ***!
-  \*************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var _a, _b;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.Product = void 0;
-const typeorm_1 = __webpack_require__(/*! typeorm */ "typeorm");
-let Product = class Product {
-};
-exports.Product = Product;
-__decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
-    __metadata("design:type", String)
-], Product.prototype, "id", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], Product.prototype, "name", void 0);
-__decorate([
-    (0, typeorm_1.Column)("text"),
-    __metadata("design:type", String)
-], Product.prototype, "description", void 0);
-__decorate([
-    (0, typeorm_1.Column)("decimal", { precision: 10, scale: 2 }),
-    __metadata("design:type", Number)
-], Product.prototype, "price", void 0);
-__decorate([
-    (0, typeorm_1.Column)("int"),
-    __metadata("design:type", Number)
-], Product.prototype, "stock", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", String)
-], Product.prototype, "category", void 0);
-__decorate([
-    (0, typeorm_1.Column)("simple-array", { nullable: true }),
-    __metadata("design:type", Array)
-], Product.prototype, "images", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ default: true }),
-    __metadata("design:type", Boolean)
-], Product.prototype, "isActive", void 0);
-__decorate([
-    (0, typeorm_1.CreateDateColumn)(),
-    __metadata("design:type", typeof (_a = typeof Date !== "undefined" && Date) === "function" ? _a : Object)
-], Product.prototype, "createdAt", void 0);
-__decorate([
-    (0, typeorm_1.UpdateDateColumn)(),
-    __metadata("design:type", typeof (_b = typeof Date !== "undefined" && Date) === "function" ? _b : Object)
-], Product.prototype, "updatedAt", void 0);
-exports.Product = Product = __decorate([
-    (0, typeorm_1.Entity)("products")
-], Product);
-
-
-/***/ }),
-
-/***/ "./src/products/products.controller.ts":
-/*!*********************************************!*\
-  !*** ./src/products/products.controller.ts ***!
-  \*********************************************/
+/* 14 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -401,9 +323,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ProductsController = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
-const products_service_1 = __webpack_require__(/*! ./products.service */ "./src/products/products.service.ts");
+const common_1 = __webpack_require__(2);
+const swagger_1 = __webpack_require__(3);
+const products_service_1 = __webpack_require__(11);
 let ProductsController = class ProductsController {
     constructor(productsService) {
         this.productsService = productsService;
@@ -484,63 +406,7 @@ exports.ProductsController = ProductsController = __decorate([
 
 
 /***/ }),
-
-/***/ "./src/products/products.module.ts":
-/*!*****************************************!*\
-  !*** ./src/products/products.module.ts ***!
-  \*****************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ProductsModule = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const typeorm_1 = __webpack_require__(/*! @nestjs/typeorm */ "@nestjs/typeorm");
-const cqrs_1 = __webpack_require__(/*! @nestjs/cqrs */ "@nestjs/cqrs");
-const products_service_1 = __webpack_require__(/*! ./products.service */ "./src/products/products.service.ts");
-const products_controller_1 = __webpack_require__(/*! ./products.controller */ "./src/products/products.controller.ts");
-const product_entity_1 = __webpack_require__(/*! ./entities/product.entity */ "./src/products/entities/product.entity.ts");
-const get_all_products_handler_1 = __webpack_require__(/*! ./queries/handlers/get-all-products.handler */ "./src/products/queries/handlers/get-all-products.handler.ts");
-const get_product_by_id_handler_1 = __webpack_require__(/*! ./queries/handlers/get-product-by-id.handler */ "./src/products/queries/handlers/get-product-by-id.handler.ts");
-const get_products_by_category_handler_1 = __webpack_require__(/*! ./queries/handlers/get-products-by-category.handler */ "./src/products/queries/handlers/get-products-by-category.handler.ts");
-const create_product_handler_1 = __webpack_require__(/*! ./commands/handlers/create-product.handler */ "./src/products/commands/handlers/create-product.handler.ts");
-const update_product_handler_1 = __webpack_require__(/*! ./commands/handlers/update-product.handler */ "./src/products/commands/handlers/update-product.handler.ts");
-const delete_product_handler_1 = __webpack_require__(/*! ./commands/handlers/delete-product.handler */ "./src/products/commands/handlers/delete-product.handler.ts");
-const QueryHandlers = [
-    get_all_products_handler_1.GetAllProductsHandler,
-    get_product_by_id_handler_1.GetProductByIdHandler,
-    get_products_by_category_handler_1.GetProductsByCategoryHandler,
-];
-const CommandHandlers = [
-    create_product_handler_1.CreateProductHandler,
-    update_product_handler_1.UpdateProductHandler,
-    delete_product_handler_1.DeleteProductHandler,
-];
-let ProductsModule = class ProductsModule {
-};
-exports.ProductsModule = ProductsModule;
-exports.ProductsModule = ProductsModule = __decorate([
-    (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([product_entity_1.Product]), cqrs_1.CqrsModule],
-        controllers: [products_controller_1.ProductsController],
-        providers: [products_service_1.ProductsService, ...QueryHandlers, ...CommandHandlers],
-        exports: [products_service_1.ProductsService],
-    })
-], ProductsModule);
-
-
-/***/ }),
-
-/***/ "./src/products/products.service.ts":
-/*!******************************************!*\
-  !*** ./src/products/products.service.ts ***!
-  \******************************************/
+/* 15 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -555,48 +421,64 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var _a, _b;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ProductsService = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const cqrs_1 = __webpack_require__(/*! @nestjs/cqrs */ "@nestjs/cqrs");
-const queries_1 = __webpack_require__(/*! ./queries */ "./src/products/queries/index.ts");
-const commands_1 = __webpack_require__(/*! ./commands */ "./src/products/commands/index.ts");
-let ProductsService = class ProductsService {
-    constructor(commandBus, queryBus) {
-        this.commandBus = commandBus;
-        this.queryBus = queryBus;
-    }
-    async findAll() {
-        return this.queryBus.execute(new queries_1.GetAllProductsQuery());
-    }
-    async findOne(id) {
-        return this.queryBus.execute(new queries_1.GetProductByIdQuery(id));
-    }
-    async findByCategory(category) {
-        return this.queryBus.execute(new queries_1.GetProductsByCategoryQuery(category));
-    }
-    async create(data) {
-        return this.commandBus.execute(new commands_1.CreateProductCommand(data));
-    }
-    async update(id, data) {
-        return this.commandBus.execute(new commands_1.UpdateProductCommand(id, data));
-    }
-    async remove(id) {
-        return this.commandBus.execute(new commands_1.DeleteProductCommand(id));
-    }
+exports.Product = void 0;
+const typeorm_1 = __webpack_require__(16);
+let Product = class Product {
 };
-exports.ProductsService = ProductsService;
-exports.ProductsService = ProductsService = __decorate([
-    (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [typeof (_a = typeof cqrs_1.CommandBus !== "undefined" && cqrs_1.CommandBus) === "function" ? _a : Object, typeof (_b = typeof cqrs_1.QueryBus !== "undefined" && cqrs_1.QueryBus) === "function" ? _b : Object])
-], ProductsService);
+exports.Product = Product;
+__decorate([
+    (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
+    __metadata("design:type", String)
+], Product.prototype, "id", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Product.prototype, "name", void 0);
+__decorate([
+    (0, typeorm_1.Column)("text"),
+    __metadata("design:type", String)
+], Product.prototype, "description", void 0);
+__decorate([
+    (0, typeorm_1.Column)("decimal", { precision: 10, scale: 2 }),
+    __metadata("design:type", Number)
+], Product.prototype, "price", void 0);
+__decorate([
+    (0, typeorm_1.Column)("int"),
+    __metadata("design:type", Number)
+], Product.prototype, "stock", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], Product.prototype, "category", void 0);
+__decorate([
+    (0, typeorm_1.Column)("simple-array", { nullable: true }),
+    __metadata("design:type", Array)
+], Product.prototype, "images", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ default: true }),
+    __metadata("design:type", Boolean)
+], Product.prototype, "isActive", void 0);
+__decorate([
+    (0, typeorm_1.CreateDateColumn)(),
+    __metadata("design:type", typeof (_a = typeof Date !== "undefined" && Date) === "function" ? _a : Object)
+], Product.prototype, "createdAt", void 0);
+__decorate([
+    (0, typeorm_1.UpdateDateColumn)(),
+    __metadata("design:type", typeof (_b = typeof Date !== "undefined" && Date) === "function" ? _b : Object)
+], Product.prototype, "updatedAt", void 0);
+exports.Product = Product = __decorate([
+    (0, typeorm_1.Entity)("products")
+], Product);
 
 
 /***/ }),
+/* 16 */
+/***/ ((module) => {
 
-/***/ "./src/products/queries/handlers/get-all-products.handler.ts":
-/*!*******************************************************************!*\
-  !*** ./src/products/queries/handlers/get-all-products.handler.ts ***!
-  \*******************************************************************/
+module.exports = require("typeorm");
+
+/***/ }),
+/* 17 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -615,11 +497,11 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.GetAllProductsHandler = void 0;
-const cqrs_1 = __webpack_require__(/*! @nestjs/cqrs */ "@nestjs/cqrs");
-const typeorm_1 = __webpack_require__(/*! @nestjs/typeorm */ "@nestjs/typeorm");
-const typeorm_2 = __webpack_require__(/*! typeorm */ "typeorm");
-const product_entity_1 = __webpack_require__(/*! ../../entities/product.entity */ "./src/products/entities/product.entity.ts");
-const __1 = __webpack_require__(/*! .. */ "./src/products/queries/index.ts");
+const cqrs_1 = __webpack_require__(10);
+const typeorm_1 = __webpack_require__(6);
+const typeorm_2 = __webpack_require__(16);
+const product_entity_1 = __webpack_require__(15);
+const __1 = __webpack_require__(12);
 let GetAllProductsHandler = class GetAllProductsHandler {
     constructor(productsRepository) {
         this.productsRepository = productsRepository;
@@ -637,11 +519,7 @@ exports.GetAllProductsHandler = GetAllProductsHandler = __decorate([
 
 
 /***/ }),
-
-/***/ "./src/products/queries/handlers/get-product-by-id.handler.ts":
-/*!********************************************************************!*\
-  !*** ./src/products/queries/handlers/get-product-by-id.handler.ts ***!
-  \********************************************************************/
+/* 18 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -660,12 +538,12 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.GetProductByIdHandler = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const cqrs_1 = __webpack_require__(/*! @nestjs/cqrs */ "@nestjs/cqrs");
-const typeorm_1 = __webpack_require__(/*! @nestjs/typeorm */ "@nestjs/typeorm");
-const typeorm_2 = __webpack_require__(/*! typeorm */ "typeorm");
-const product_entity_1 = __webpack_require__(/*! ../../entities/product.entity */ "./src/products/entities/product.entity.ts");
-const __1 = __webpack_require__(/*! .. */ "./src/products/queries/index.ts");
+const common_1 = __webpack_require__(2);
+const cqrs_1 = __webpack_require__(10);
+const typeorm_1 = __webpack_require__(6);
+const typeorm_2 = __webpack_require__(16);
+const product_entity_1 = __webpack_require__(15);
+const __1 = __webpack_require__(12);
 let GetProductByIdHandler = class GetProductByIdHandler {
     constructor(productsRepository) {
         this.productsRepository = productsRepository;
@@ -688,11 +566,7 @@ exports.GetProductByIdHandler = GetProductByIdHandler = __decorate([
 
 
 /***/ }),
-
-/***/ "./src/products/queries/handlers/get-products-by-category.handler.ts":
-/*!***************************************************************************!*\
-  !*** ./src/products/queries/handlers/get-products-by-category.handler.ts ***!
-  \***************************************************************************/
+/* 19 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -711,11 +585,11 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.GetProductsByCategoryHandler = void 0;
-const cqrs_1 = __webpack_require__(/*! @nestjs/cqrs */ "@nestjs/cqrs");
-const typeorm_1 = __webpack_require__(/*! @nestjs/typeorm */ "@nestjs/typeorm");
-const typeorm_2 = __webpack_require__(/*! typeorm */ "typeorm");
-const product_entity_1 = __webpack_require__(/*! ../../entities/product.entity */ "./src/products/entities/product.entity.ts");
-const __1 = __webpack_require__(/*! .. */ "./src/products/queries/index.ts");
+const cqrs_1 = __webpack_require__(10);
+const typeorm_1 = __webpack_require__(6);
+const typeorm_2 = __webpack_require__(16);
+const product_entity_1 = __webpack_require__(15);
+const __1 = __webpack_require__(12);
 let GetProductsByCategoryHandler = class GetProductsByCategoryHandler {
     constructor(productsRepository) {
         this.productsRepository = productsRepository;
@@ -736,117 +610,151 @@ exports.GetProductsByCategoryHandler = GetProductsByCategoryHandler = __decorate
 
 
 /***/ }),
-
-/***/ "./src/products/queries/index.ts":
-/*!***************************************!*\
-  !*** ./src/products/queries/index.ts ***!
-  \***************************************/
-/***/ ((__unused_webpack_module, exports) => {
+/* 20 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.GetProductsByCategoryQuery = exports.GetProductByIdQuery = exports.GetAllProductsQuery = void 0;
-class GetAllProductsQuery {
-    constructor() { }
-}
-exports.GetAllProductsQuery = GetAllProductsQuery;
-class GetProductByIdQuery {
-    constructor(id) {
-        this.id = id;
+exports.CreateProductHandler = void 0;
+const cqrs_1 = __webpack_require__(10);
+const typeorm_1 = __webpack_require__(6);
+const typeorm_2 = __webpack_require__(16);
+const product_entity_1 = __webpack_require__(15);
+const __1 = __webpack_require__(13);
+let CreateProductHandler = class CreateProductHandler {
+    constructor(productsRepository) {
+        this.productsRepository = productsRepository;
     }
-}
-exports.GetProductByIdQuery = GetProductByIdQuery;
-class GetProductsByCategoryQuery {
-    constructor(category) {
-        this.category = category;
+    async execute(command) {
+        const { data } = command;
+        const product = this.productsRepository.create(data);
+        return this.productsRepository.save(product);
     }
-}
-exports.GetProductsByCategoryQuery = GetProductsByCategoryQuery;
+};
+exports.CreateProductHandler = CreateProductHandler;
+exports.CreateProductHandler = CreateProductHandler = __decorate([
+    (0, cqrs_1.CommandHandler)(__1.CreateProductCommand),
+    __param(0, (0, typeorm_1.InjectRepository)(product_entity_1.Product)),
+    __metadata("design:paramtypes", [typeof (_a = typeof typeorm_2.Repository !== "undefined" && typeorm_2.Repository) === "function" ? _a : Object])
+], CreateProductHandler);
 
 
 /***/ }),
+/* 21 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-/***/ "@furniro/common":
-/*!**********************************!*\
-  !*** external "@furniro/common" ***!
-  \**********************************/
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UpdateProductHandler = void 0;
+const common_1 = __webpack_require__(2);
+const cqrs_1 = __webpack_require__(10);
+const typeorm_1 = __webpack_require__(6);
+const typeorm_2 = __webpack_require__(16);
+const product_entity_1 = __webpack_require__(15);
+const __1 = __webpack_require__(13);
+let UpdateProductHandler = class UpdateProductHandler {
+    constructor(productsRepository) {
+        this.productsRepository = productsRepository;
+    }
+    async execute(command) {
+        const { id, data } = command;
+        const product = await this.productsRepository.findOne({ where: { id } });
+        if (!product) {
+            throw new common_1.NotFoundException(`Product with ID ${id} not found`);
+        }
+        Object.assign(product, data);
+        return this.productsRepository.save(product);
+    }
+};
+exports.UpdateProductHandler = UpdateProductHandler;
+exports.UpdateProductHandler = UpdateProductHandler = __decorate([
+    (0, cqrs_1.CommandHandler)(__1.UpdateProductCommand),
+    __param(0, (0, typeorm_1.InjectRepository)(product_entity_1.Product)),
+    __metadata("design:paramtypes", [typeof (_a = typeof typeorm_2.Repository !== "undefined" && typeorm_2.Repository) === "function" ? _a : Object])
+], UpdateProductHandler);
+
+
+/***/ }),
+/* 22 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var _a;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.DeleteProductHandler = void 0;
+const common_1 = __webpack_require__(2);
+const cqrs_1 = __webpack_require__(10);
+const typeorm_1 = __webpack_require__(6);
+const typeorm_2 = __webpack_require__(16);
+const product_entity_1 = __webpack_require__(15);
+const __1 = __webpack_require__(13);
+let DeleteProductHandler = class DeleteProductHandler {
+    constructor(productsRepository) {
+        this.productsRepository = productsRepository;
+    }
+    async execute(command) {
+        const { id } = command;
+        const product = await this.productsRepository.findOne({ where: { id } });
+        if (!product) {
+            throw new common_1.NotFoundException(`Product with ID ${id} not found`);
+        }
+        await this.productsRepository.remove(product);
+    }
+};
+exports.DeleteProductHandler = DeleteProductHandler;
+exports.DeleteProductHandler = DeleteProductHandler = __decorate([
+    (0, cqrs_1.CommandHandler)(__1.DeleteProductCommand),
+    __param(0, (0, typeorm_1.InjectRepository)(product_entity_1.Product)),
+    __metadata("design:paramtypes", [typeof (_a = typeof typeorm_2.Repository !== "undefined" && typeorm_2.Repository) === "function" ? _a : Object])
+], DeleteProductHandler);
+
+
+/***/ }),
+/* 23 */
 /***/ ((module) => {
 
 module.exports = require("@furniro/common");
 
-/***/ }),
-
-/***/ "@nestjs/common":
-/*!*********************************!*\
-  !*** external "@nestjs/common" ***!
-  \*********************************/
-/***/ ((module) => {
-
-module.exports = require("@nestjs/common");
-
-/***/ }),
-
-/***/ "@nestjs/config":
-/*!*********************************!*\
-  !*** external "@nestjs/config" ***!
-  \*********************************/
-/***/ ((module) => {
-
-module.exports = require("@nestjs/config");
-
-/***/ }),
-
-/***/ "@nestjs/core":
-/*!*******************************!*\
-  !*** external "@nestjs/core" ***!
-  \*******************************/
-/***/ ((module) => {
-
-module.exports = require("@nestjs/core");
-
-/***/ }),
-
-/***/ "@nestjs/cqrs":
-/*!*******************************!*\
-  !*** external "@nestjs/cqrs" ***!
-  \*******************************/
-/***/ ((module) => {
-
-module.exports = require("@nestjs/cqrs");
-
-/***/ }),
-
-/***/ "@nestjs/swagger":
-/*!**********************************!*\
-  !*** external "@nestjs/swagger" ***!
-  \**********************************/
-/***/ ((module) => {
-
-module.exports = require("@nestjs/swagger");
-
-/***/ }),
-
-/***/ "@nestjs/typeorm":
-/*!**********************************!*\
-  !*** external "@nestjs/typeorm" ***!
-  \**********************************/
-/***/ ((module) => {
-
-module.exports = require("@nestjs/typeorm");
-
-/***/ }),
-
-/***/ "typeorm":
-/*!**************************!*\
-  !*** external "typeorm" ***!
-  \**************************/
-/***/ ((module) => {
-
-module.exports = require("typeorm");
-
 /***/ })
-
-/******/ 	});
+/******/ 	]);
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
@@ -877,16 +785,13 @@ var __webpack_exports__ = {};
 // This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
 (() => {
 var exports = __webpack_exports__;
-/*!*********************!*\
-  !*** ./src/main.ts ***!
-  \*********************/
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const core_1 = __webpack_require__(/*! @nestjs/core */ "@nestjs/core");
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
-const app_module_1 = __webpack_require__(/*! ./app.module */ "./src/app.module.ts");
-const common_2 = __webpack_require__(/*! @furniro/common */ "@furniro/common");
+const core_1 = __webpack_require__(1);
+const common_1 = __webpack_require__(2);
+const swagger_1 = __webpack_require__(3);
+const app_module_1 = __webpack_require__(4);
+const common_2 = __webpack_require__(23);
 async function bootstrap() {
     const logger = new common_1.Logger("ProductService");
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
@@ -910,9 +815,10 @@ async function bootstrap() {
         .build();
     const document = swagger_1.SwaggerModule.createDocument(app, config);
     swagger_1.SwaggerModule.setup("api/docs", app, document);
-    const port = process.env.PORT || 3002;
-    await app.listen(port);
+    const port = process.env.PORT || 8002;
+    await app.listen(port, "0.0.0.0");
     logger.log(`Product Service running on port ${port}`);
+    logger.log(`🚀 Swagger Docs: http://localhost:${port}/api/docs`);
 }
 bootstrap();
 
