@@ -1,0 +1,31 @@
+{
+  "name": "furniro",
+  "version": "1.0.0",
+  "description": "Furniro E-commerce Backend - Microservices Architecture",
+  "main": "index.js",
+  "scripts": {
+    "build": "pnpm -r run build",
+    "build:auth": "pnpm --filter auth-service run build",
+    "build:product": "pnpm --filter product-service run build",
+    "build:order": "pnpm --filter order-service run build",
+    "build:gateway": "pnpm --filter api-gateway run build",
+    "start:auth": "pnpm --filter auth-service run start:dev",
+    "start:product": "pnpm --filter product-service run start:dev",
+    "start:order": "pnpm --filter order-service run start:dev",
+    "start:gateway": "pnpm --filter api-gateway run start:dev",
+    "start:all": "concurrently \"pnpm run start:auth\" \"pnpm run start:product\" \"pnpm run start:order\" \"pnpm run start:gateway\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nestjs",
+    "microservices",
+    "cqrs",
+    "e-commerce"
+  ],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.33.2",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
