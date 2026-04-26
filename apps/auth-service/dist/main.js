@@ -931,6 +931,77 @@ exports.DeleteUserCommand = DeleteUserCommand;
 
 /***/ }),
 
+/***/ "./src/users/dto/update-user-role.dto.ts":
+/*!***********************************************!*\
+  !*** ./src/users/dto/update-user-role.dto.ts ***!
+  \***********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UpdateUserRoleDto = void 0;
+const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
+const class_validator_1 = __webpack_require__(/*! class-validator */ "class-validator");
+const common_1 = __webpack_require__(/*! @furniro/common */ "@furniro/common");
+class UpdateUserRoleDto {
+}
+exports.UpdateUserRoleDto = UpdateUserRoleDto;
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "admin",
+        description: "The new role for the user",
+        enum: [common_1.UserRole.SUPER_ADMIN, common_1.UserRole.ADMIN, common_1.UserRole.STAFF, common_1.UserRole.CUSTOMER],
+        enumName: "UserRole",
+        required: false,
+    }),
+    (0, class_validator_1.IsEnum)(common_1.UserRole),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", typeof (_a = typeof common_1.UserRole !== "undefined" && common_1.UserRole) === "function" ? _a : Object)
+], UpdateUserRoleDto.prototype, "role", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "John Updated",
+        description: "Updated name of the user",
+        required: false,
+    }),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], UpdateUserRoleDto.prototype, "name", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "+1234567890",
+        description: "Updated phone number",
+        required: false,
+    }),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], UpdateUserRoleDto.prototype, "phone", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "123 New Street",
+        description: "Updated address",
+        required: false,
+    }),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], UpdateUserRoleDto.prototype, "address", void 0);
+
+
+/***/ }),
+
 /***/ "./src/users/entities/user.entity.ts":
 /*!*******************************************!*\
   !*** ./src/users/entities/user.entity.ts ***!
@@ -1140,13 +1211,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var _a;
+var _a, _b;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.UsersController = void 0;
 const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
 const users_service_1 = __webpack_require__(/*! ./users.service */ "./src/users/users.service.ts");
 const jwt_auth_guard_1 = __webpack_require__(/*! ../auth/guards/jwt-auth.guard */ "./src/auth/guards/jwt-auth.guard.ts");
+const common_2 = __webpack_require__(/*! @furniro/common */ "@furniro/common");
+const update_user_role_dto_1 = __webpack_require__(/*! ./dto/update-user-role.dto */ "./src/users/dto/update-user-role.dto.ts");
 let UsersController = class UsersController {
     constructor(usersService) {
         this.usersService = usersService;
@@ -1182,13 +1255,14 @@ __decorate([
 ], UsersController.prototype, "findOne", null);
 __decorate([
     (0, common_1.Patch)(":id"),
-    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, common_2.Roles)(common_2.UserRole.ADMIN, common_2.UserRole.SUPER_ADMIN),
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard, common_2.RolesGuard),
     (0, swagger_1.ApiBearerAuth)(),
-    (0, swagger_1.ApiOperation)({ summary: "Update user" }),
+    (0, swagger_1.ApiOperation)({ summary: "Update user (Admin only)" }),
     __param(0, (0, common_1.Param)("id")),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:paramtypes", [String, typeof (_b = typeof update_user_role_dto_1.UpdateUserRoleDto !== "undefined" && update_user_role_dto_1.UpdateUserRoleDto) === "function" ? _b : Object]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "update", null);
 __decorate([

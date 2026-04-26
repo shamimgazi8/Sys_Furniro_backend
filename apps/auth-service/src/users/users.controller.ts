@@ -11,6 +11,8 @@ import {
 import { ApiTags, ApiOperation, ApiBearerAuth } from "@nestjs/swagger";
 import { UsersService } from "./users.service";
 import { JwtAuthGuard } from "../auth/guards/jwt-auth.guard";
+import { UserRole, Roles, RolesGuard } from "@furniro/common";
+import { UpdateUserRoleDto } from "./dto/update-user-role.dto";
 
 @ApiTags("users")
 @Controller("users")
@@ -30,10 +32,11 @@ export class UsersController {
   }
 
   @Patch(":id")
-  @UseGuards(JwtAuthGuard)
+  @Roles(UserRole.ADMIN, UserRole.SUPER_ADMIN)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @ApiBearerAuth()
-  @ApiOperation({ summary: "Update user" })
-  update(@Param("id") id: string, @Body() updateUserDto: any) {
+  @ApiOperation({ summary: "Update user (Admin only)" })
+  update(@Param("id") id: string, @Body() updateUserDto: UpdateUserRoleDto) {
     return this.usersService.update(id, updateUserDto);
   }
 
