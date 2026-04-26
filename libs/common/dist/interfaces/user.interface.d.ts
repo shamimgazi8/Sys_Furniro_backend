@@ -1,5 +1,6 @@
 export interface IUser {
-    id: string;
+    id: number;
+    uuid: string;
     email: string;
     name: string;
     role: string;
@@ -28,7 +29,7 @@ export interface IAuthPayload {
 }
 export interface IJwtPayload {
     email: string;
-    sub: string;
+    sub: number;
     role: string;
     iat?: number;
     exp?: number;

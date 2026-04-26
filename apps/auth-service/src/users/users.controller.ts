@@ -15,6 +15,8 @@ import { UserRole, Roles, RolesGuard } from "@furniro/common";
 import { UpdateUserRoleDto } from "./dto/update-user-role.dto";
 
 @ApiTags("users")
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard)
 @Controller("users")
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
@@ -27,24 +29,21 @@ export class UsersController {
 
   @Get(":id")
   @ApiOperation({ summary: "Get user by ID" })
-  findOne(@Param("id") id: string) {
+  findOne(@Param("id") id: number) {
     return this.usersService.findOne(id);
   }
 
   @Patch(":id")
   @Roles(UserRole.ADMIN, UserRole.SUPER_ADMIN)
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @ApiBearerAuth()
+  @UseGuards(RolesGuard)
   @ApiOperation({ summary: "Update user (Admin only)" })
-  update(@Param("id") id: string, @Body() updateUserDto: UpdateUserRoleDto) {
+  update(@Param("id") id: number, @Body() updateUserDto: UpdateUserRoleDto) {
     return this.usersService.update(id, updateUserDto);
   }
 
   @Delete(":id")
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
   @ApiOperation({ summary: "Delete user" })
-  remove(@Param("id") id: string) {
+  remove(@Param("id") id: number) {
     return this.usersService.remove(id);
   }
 }

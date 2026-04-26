@@ -6,16 +6,21 @@ import {
   UpdateDateColumn,
   ManyToOne,
   JoinColumn,
+  Generated,
 } from "typeorm";
 import { User } from "../../users/entities/user.entity";
 
 @Entity("orders")
 export class Order {
-  @PrimaryGeneratedColumn("uuid")
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column({ unique: true })
+  @Generated("uuid")
+  uuid: string;
 
   @Column()
-  userId: string;
+  userId: number;
 
   @ManyToOne(() => User)
   @JoinColumn({ name: "userId" })

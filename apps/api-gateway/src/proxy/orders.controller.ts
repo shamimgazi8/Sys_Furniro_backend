@@ -29,7 +29,7 @@ export class OrdersController {
 
   @Get(":id")
   async findOne(
-    @Param("id") id: string,
+    @Param("id") id: number,
     @Headers("authorization") auth: string,
   ) {
     const response = await this.client.get(`/api/orders/${id}`, {
@@ -40,7 +40,7 @@ export class OrdersController {
 
   @Get("user/:userId")
   async findByUser(
-    @Param("userId") userId: string,
+    @Param("userId") userId: number,
     @Headers("authorization") auth: string,
   ) {
     const response = await this.client.get(`/api/orders/user/${userId}`, {
@@ -59,7 +59,7 @@ export class OrdersController {
 
   @Patch(":id")
   async update(
-    @Param("id") id: string,
+    @Param("id") id: number,
     @Body() body: any,
     @Headers("authorization") auth: string,
   ) {
@@ -71,7 +71,7 @@ export class OrdersController {
 
   @Delete(":id")
   async remove(
-    @Param("id") id: string,
+    @Param("id") id: number,
     @Headers("authorization") auth: string,
   ) {
     const response = await this.client.delete(`/api/orders/${id}`, {

@@ -19,7 +19,7 @@ export class UsersService {
     return this.queryBus.execute(new GetAllUsersQuery());
   }
 
-  async findOne(id: string): Promise<User> {
+  async findOne(id: number): Promise<User> {
     return this.queryBus.execute(new GetUserByIdQuery(id));
   }
 
@@ -32,11 +32,11 @@ export class UsersService {
     return this.usersRepository.save(user);
   }
 
-  async update(id: string, data: Partial<User>): Promise<User> {
+  async update(id: number, data: Partial<User>): Promise<User> {
     return this.commandBus.execute(new UpdateUserCommand(id, data));
   }
 
-  async remove(id: string): Promise<void> {
+  async remove(id: number): Promise<void> {
     return this.commandBus.execute(new DeleteUserCommand(id));
   }
 }

@@ -1,6 +1,7 @@
 export * from './common.module';
 export * from './common.service';
 export * from './filters/all-exceptions.filter';
+export * from './interceptors/transform.interceptor';
 export * from './filters/logging.interceptor';
 export * from './database/database.module';
 export * from './interfaces';

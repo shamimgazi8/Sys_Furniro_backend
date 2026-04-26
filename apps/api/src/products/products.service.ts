@@ -14,8 +14,8 @@ export class ProductsService {
     return this.productsRepository.find({ where: { isActive: true } });
   }
 
-  async findOne(id: string): Promise<Product> {
-    const product = await this.productsRepository.findOne({ where: { id } });
+  async findOne(id: number): Promise<Product> {
+    const product = await this.productsRepository.findOne({ where: { id: id as any } });
     if (!product) {
       throw new NotFoundException(`Product with ID ${id} not found`);
     }
@@ -33,13 +33,13 @@ export class ProductsService {
     return this.productsRepository.save(product);
   }
 
-  async update(id: string, data: Partial<Product>): Promise<Product> {
+  async update(id: number, data: Partial<Product>): Promise<Product> {
     const product = await this.findOne(id);
     Object.assign(product, data);
     return this.productsRepository.save(product);
   }
 
-  async remove(id: string): Promise<void> {
+  async remove(id: number): Promise<void> {
     const product = await this.findOne(id);
     await this.productsRepository.remove(product);
   }

@@ -17,6 +17,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./common.module"), exports);
 __exportStar(require("./common.service"), exports);
 __exportStar(require("./filters/all-exceptions.filter"), exports);
+__exportStar(require("./interceptors/transform.interceptor"), exports);
 __exportStar(require("./filters/logging.interceptor"), exports);
 __exportStar(require("./database/database.module"), exports);
 __exportStar(require("./interfaces"), exports);

@@ -24,6 +24,7 @@ let AllExceptionsFilter = AllExceptionsFilter_1 = class AllExceptionsFilter {
             : "Internal server error";
         this.logger.error(`HTTP Status: ${status} | Message: ${JSON.stringify(message)}`, exception instanceof Error ? exception.stack : "");
         response.status(status).json({
+            success: false,
             statusCode: status,
             timestamp: new Date().toISOString(),
             message: typeof message === "string"

@@ -14,11 +14,11 @@ export class OrdersService {
     return this.queryBus.execute(new GetAllOrdersQuery());
   }
 
-  async findOne(id: string) {
+  async findOne(id: number) {
     return this.queryBus.execute(new GetOrderByIdQuery(id));
   }
 
-  async findByUser(userId: string) {
+  async findByUser(userId: number) {
     return this.queryBus.execute(new GetOrdersByUserQuery(userId));
   }
 
@@ -26,11 +26,11 @@ export class OrdersService {
     return this.commandBus.execute(new CreateOrderCommand(data));
   }
 
-  async update(id: string, data: any) {
+  async update(id: number, data: any) {
     return this.commandBus.execute(new UpdateOrderCommand(id, data));
   }
 
-  async remove(id: string) {
+  async remove(id: number) {
     return this.commandBus.execute(new DeleteOrderCommand(id));
   }
 }

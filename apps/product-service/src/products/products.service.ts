@@ -14,7 +14,7 @@ export class ProductsService {
     return this.queryBus.execute(new GetAllProductsQuery());
   }
 
-  async findOne(id: string) {
+  async findOne(id: number) {
     return this.queryBus.execute(new GetProductByIdQuery(id));
   }
 
@@ -26,11 +26,11 @@ export class ProductsService {
     return this.commandBus.execute(new CreateProductCommand(data));
   }
 
-  async update(id: string, data: any) {
+  async update(id: number, data: any) {
     return this.commandBus.execute(new UpdateProductCommand(id, data));
   }
 
-  async remove(id: string) {
+  async remove(id: number) {
     return this.commandBus.execute(new DeleteProductCommand(id));
   }
 }

@@ -29,7 +29,7 @@ export class OrdersController {
   @Get(":id")
   @ApiBearerAuth()
   @ApiOperation({ summary: "Get order by ID" })
-  findOne(@Param("id") id: string) {
+  findOne(@Param("id") id: number) {
     return this.ordersService.findOne(id);
   }
 
@@ -37,7 +37,7 @@ export class OrdersController {
   @Get("user/:userId")
   @ApiBearerAuth()
   @ApiOperation({ summary: "Get orders by user" })
-  findByUser(@Param("userId") userId: string) {
+  findByUser(@Param("userId") userId: number) {
     return this.ordersService.findByUser(userId);
   }
 
@@ -53,7 +53,7 @@ export class OrdersController {
   @Patch(":id")
   @ApiBearerAuth()
   @ApiOperation({ summary: "Update order" })
-  update(@Param("id") id: string, @Body() updateOrderDto: any) {
+  update(@Param("id") id: number, @Body() updateOrderDto: any) {
     return this.ordersService.update(id, updateOrderDto);
   }
 
@@ -61,7 +61,7 @@ export class OrdersController {
   @Delete(":id")
   @ApiBearerAuth()
   @ApiOperation({ summary: "Delete order" })
-  remove(@Param("id") id: string) {
+  remove(@Param("id") id: number) {
     return this.ordersService.remove(id);
   }
 }

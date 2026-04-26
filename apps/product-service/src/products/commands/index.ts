@@ -4,11 +4,11 @@ export class CreateProductCommand {
 
 export class UpdateProductCommand {
   constructor(
-    public readonly id: string,
+    public readonly id: number,
     public readonly data: any,
   ) {}
 }
 
 export class DeleteProductCommand {
-  constructor(public readonly id: string) {}
+  constructor(public readonly id: number) {}
 }

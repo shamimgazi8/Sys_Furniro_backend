@@ -14,9 +14,9 @@ export class OrdersService {
     return this.ordersRepository.find({ relations: ["user"] });
   }
 
-  async findOne(id: string): Promise<Order> {
+  async findOne(id: number): Promise<Order> {
     const order = await this.ordersRepository.findOne({
-      where: { id },
+      where: { id: id as any },
       relations: ["user"],
     });
     if (!order) {
@@ -25,7 +25,7 @@ export class OrdersService {
     return order;
   }
 
-  async findByUser(userId: string): Promise<Order[]> {
+  async findByUser(userId: number): Promise<Order[]> {
     return this.ordersRepository.find({
       where: { userId },
       relations: ["user"],
@@ -37,13 +37,13 @@ export class OrdersService {
     return this.ordersRepository.save(order);
   }
 
-  async update(id: string, data: Partial<Order>): Promise<Order> {
+  async update(id: number, data: Partial<Order>): Promise<Order> {
     const order = await this.findOne(id);
     Object.assign(order, data);
     return this.ordersRepository.save(order);
   }
 
-  async remove(id: string): Promise<void> {
+  async remove(id: number): Promise<void> {
     const order = await this.findOne(id);
     await this.ordersRepository.remove(order);
   }

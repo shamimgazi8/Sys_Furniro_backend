@@ -6,15 +6,20 @@ import {
   UpdateDateColumn,
   ManyToOne,
   JoinColumn,
+  Generated,
 } from "typeorm";
 
 @Entity("orders")
 export class Order {
-  @PrimaryGeneratedColumn("uuid")
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column({ unique: true })
+  @Generated("uuid")
+  uuid: string;
 
   @Column()
-  userId: string;
+  userId: number;
 
   @Column("decimal", { precision: 10, scale: 2 })
   totalAmount: number;

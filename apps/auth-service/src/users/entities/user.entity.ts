@@ -4,18 +4,24 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  Generated,
 } from "typeorm";
 import { UserRole } from "@furniro/common";
+import { Exclude } from "class-transformer";
 
 @Entity("users")
 export class User {
-  @PrimaryGeneratedColumn("uuid")
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column({ unique: true })
+  @Generated("uuid")
+  uuid: string;
 
   @Column({ unique: true })
   email: string;
 
-  @Column()
+  @Column({ select: false })
   password: string;
 
   @Column()
@@ -29,10 +35,10 @@ export class User {
   role: UserRole;
 
   @Column({ nullable: true })
-  phone: string;
+  phone_number?: string;
 
   @Column({ nullable: true })
-  address: string;
+  address?: string;
 
   @CreateDateColumn()
   createdAt: Date;

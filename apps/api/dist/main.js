@@ -39,8 +39,8 @@ const app_controller_1 = __webpack_require__(7);
 const app_service_1 = __webpack_require__(8);
 const auth_module_1 = __webpack_require__(9);
 const users_module_1 = __webpack_require__(23);
-const products_module_1 = __webpack_require__(25);
-const orders_module_1 = __webpack_require__(29);
+const products_module_1 = __webpack_require__(46);
+const orders_module_1 = __webpack_require__(50);
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -298,7 +298,7 @@ let UsersService = class UsersService {
         return this.usersRepository.find();
     }
     async findOne(id) {
-        const user = await this.usersRepository.findOne({ where: { id } });
+        const user = await this.usersRepository.findOne({ where: { id: id } });
         if (!user) {
             throw new common_1.NotFoundException(`User with ID ${id} not found`);
         }
@@ -357,9 +357,14 @@ let User = class User {
 };
 exports.User = User;
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
-    __metadata("design:type", String)
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    __metadata("design:type", Number)
 ], User.prototype, "id", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ unique: true }),
+    (0, typeorm_1.Generated)("uuid"),
+    __metadata("design:type", String)
+], User.prototype, "uuid", void 0);
 __decorate([
     (0, typeorm_1.Column)({ unique: true }),
     __metadata("design:type", String)
@@ -644,13 +649,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var _a;
+var _a, _b;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.UsersController = void 0;
 const common_1 = __webpack_require__(2);
 const swagger_1 = __webpack_require__(3);
 const users_service_1 = __webpack_require__(13);
 const jwt_auth_guard_1 = __webpack_require__(18);
+const common_2 = __webpack_require__(25);
 let UsersController = class UsersController {
     constructor(usersService) {
         this.usersService = usersService;
@@ -681,7 +687,7 @@ __decorate([
     (0, swagger_1.ApiOperation)({ summary: "Get user by ID" }),
     __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "findOne", null);
 __decorate([
@@ -692,7 +698,7 @@ __decorate([
     __param(0, (0, common_1.Param)("id")),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:paramtypes", [Number, typeof (_b = typeof common_2.UpdateUserDto !== "undefined" && common_2.UpdateUserDto) === "function" ? _b : Object]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "update", null);
 __decorate([
@@ -702,7 +708,7 @@ __decorate([
     (0, swagger_1.ApiOperation)({ summary: "Delete user" }),
     __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "remove", null);
 exports.UsersController = UsersController = __decorate([
@@ -717,6 +723,733 @@ exports.UsersController = UsersController = __decorate([
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__webpack_require__(26), exports);
+__exportStar(__webpack_require__(27), exports);
+__exportStar(__webpack_require__(29), exports);
+__exportStar(__webpack_require__(32), exports);
+__exportStar(__webpack_require__(30), exports);
+__exportStar(__webpack_require__(28), exports);
+__exportStar(__webpack_require__(33), exports);
+__exportStar(__webpack_require__(37), exports);
+__exportStar(__webpack_require__(38), exports);
+__exportStar(__webpack_require__(39), exports);
+__exportStar(__webpack_require__(45), exports);
+
+
+/***/ }),
+/* 26 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CommonModule = void 0;
+const common_1 = __webpack_require__(2);
+const common_service_1 = __webpack_require__(27);
+const database_module_1 = __webpack_require__(28);
+const all_exceptions_filter_1 = __webpack_require__(29);
+const logging_interceptor_1 = __webpack_require__(30);
+let CommonModule = class CommonModule {
+};
+exports.CommonModule = CommonModule;
+exports.CommonModule = CommonModule = __decorate([
+    (0, common_1.Module)({
+        imports: [database_module_1.DatabaseModule],
+        providers: [common_service_1.CommonService, all_exceptions_filter_1.AllExceptionsFilter, logging_interceptor_1.LoggingInterceptor],
+        exports: [
+            common_service_1.CommonService,
+            database_module_1.DatabaseModule,
+            all_exceptions_filter_1.AllExceptionsFilter,
+            logging_interceptor_1.LoggingInterceptor,
+        ],
+    })
+], CommonModule);
+
+
+/***/ }),
+/* 27 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CommonService = void 0;
+const common_1 = __webpack_require__(2);
+let CommonService = class CommonService {
+};
+exports.CommonService = CommonService;
+exports.CommonService = CommonService = __decorate([
+    (0, common_1.Injectable)()
+], CommonService);
+
+
+/***/ }),
+/* 28 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var DatabaseModule_1;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.DatabaseModule = void 0;
+const common_1 = __webpack_require__(2);
+const typeorm_1 = __webpack_require__(6);
+const config_1 = __webpack_require__(5);
+let DatabaseModule = DatabaseModule_1 = class DatabaseModule {
+    static forRoot() {
+        return {
+            module: DatabaseModule_1,
+            imports: [
+                typeorm_1.TypeOrmModule.forRootAsync({
+                    inject: [config_1.ConfigService],
+                    useFactory: (config) => ({
+                        type: "postgres",
+                        host: config.get("DB_HOST", "localhost"),
+                        port: parseInt(config.get("DB_PORT", "5432")),
+                        username: config.get("DB_USERNAME", "postgres"),
+                        password: config.get("DB_PASSWORD", "password"),
+                        database: config.get("DB_NAME", "furniro"),
+                        entities: [__dirname + "/../../**/*.entity{.ts,.js}"],
+                        synchronize: config.get("NODE_ENV") !== "production",
+                        logging: config.get("NODE_ENV") === "development",
+                        extra: {
+                            pool: {
+                                min: 2,
+                                max: 10,
+                            },
+                        },
+                    }),
+                }),
+            ],
+            exports: [typeorm_1.TypeOrmModule],
+        };
+    }
+    static forFeature(entities) {
+        return {
+            module: DatabaseModule_1,
+            imports: [typeorm_1.TypeOrmModule.forFeature(entities)],
+            exports: [typeorm_1.TypeOrmModule],
+        };
+    }
+};
+exports.DatabaseModule = DatabaseModule;
+exports.DatabaseModule = DatabaseModule = DatabaseModule_1 = __decorate([
+    (0, common_1.Global)(),
+    (0, common_1.Module)({})
+], DatabaseModule);
+
+
+/***/ }),
+/* 29 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var AllExceptionsFilter_1;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AllExceptionsFilter = void 0;
+const common_1 = __webpack_require__(2);
+let AllExceptionsFilter = AllExceptionsFilter_1 = class AllExceptionsFilter {
+    constructor() {
+        this.logger = new common_1.Logger(AllExceptionsFilter_1.name);
+    }
+    catch(exception, host) {
+        const ctx = host.switchToHttp();
+        const response = ctx.getResponse();
+        const status = exception instanceof common_1.HttpException
+            ? exception.getStatus()
+            : common_1.HttpStatus.INTERNAL_SERVER_ERROR;
+        const message = exception instanceof common_1.HttpException
+            ? exception.getResponse()
+            : "Internal server error";
+        this.logger.error(`HTTP Status: ${status} | Message: ${JSON.stringify(message)}`, exception instanceof Error ? exception.stack : "");
+        response.status(status).json({
+            success: false,
+            statusCode: status,
+            timestamp: new Date().toISOString(),
+            message: typeof message === "string"
+                ? message
+                : message.message || message,
+            ...(process.env.NODE_ENV === "development" && {
+                stack: exception.stack,
+            }),
+        });
+    }
+};
+exports.AllExceptionsFilter = AllExceptionsFilter;
+exports.AllExceptionsFilter = AllExceptionsFilter = AllExceptionsFilter_1 = __decorate([
+    (0, common_1.Catch)()
+], AllExceptionsFilter);
+
+
+/***/ }),
+/* 30 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.LoggingInterceptor = void 0;
+const common_1 = __webpack_require__(2);
+const operators_1 = __webpack_require__(31);
+let LoggingInterceptor = class LoggingInterceptor {
+    constructor() {
+        this.logger = new common_1.Logger("HTTP");
+    }
+    intercept(context, next) {
+        const request = context.switchToHttp().getRequest();
+        const { method, url, body } = request;
+        const now = Date.now();
+        return next.handle().pipe((0, operators_1.tap)(() => {
+            const response = context.switchToHttp().getResponse();
+            const delay = Date.now() - now;
+            this.logger.log(`${method} ${url} ${response.statusCode} - ${delay}ms`);
+        }));
+    }
+};
+exports.LoggingInterceptor = LoggingInterceptor;
+exports.LoggingInterceptor = LoggingInterceptor = __decorate([
+    (0, common_1.Injectable)()
+], LoggingInterceptor);
+
+
+/***/ }),
+/* 31 */
+/***/ ((module) => {
+
+module.exports = require("rxjs/operators");
+
+/***/ }),
+/* 32 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.TransformInterceptor = void 0;
+const common_1 = __webpack_require__(2);
+const operators_1 = __webpack_require__(31);
+let TransformInterceptor = class TransformInterceptor {
+    intercept(context, next) {
+        const response = context.switchToHttp().getResponse();
+        const statusCode = response.statusCode;
+        return next.handle().pipe((0, operators_1.map)((data) => ({
+            success: true,
+            statusCode,
+            message: data?.message || "Operation successful",
+            data: data?.data !== undefined ? data.data : data,
+        })));
+    }
+};
+exports.TransformInterceptor = TransformInterceptor;
+exports.TransformInterceptor = TransformInterceptor = __decorate([
+    (0, common_1.Injectable)()
+], TransformInterceptor);
+
+
+/***/ }),
+/* 33 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__webpack_require__(34), exports);
+__exportStar(__webpack_require__(35), exports);
+__exportStar(__webpack_require__(36), exports);
+
+
+/***/ }),
+/* 34 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+/* 35 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+/* 36 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.OrderStatus = void 0;
+var OrderStatus;
+(function (OrderStatus) {
+    OrderStatus["PENDING"] = "pending";
+    OrderStatus["PROCESSING"] = "processing";
+    OrderStatus["SHIPPED"] = "shipped";
+    OrderStatus["DELIVERED"] = "delivered";
+    OrderStatus["CANCELLED"] = "cancelled";
+})(OrderStatus || (exports.OrderStatus = OrderStatus = {}));
+
+
+/***/ }),
+/* 37 */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.Roles = exports.ROLES_KEY = void 0;
+const common_1 = __webpack_require__(2);
+exports.ROLES_KEY = 'roles';
+const Roles = (...roles) => (0, common_1.SetMetadata)(exports.ROLES_KEY, roles);
+exports.Roles = Roles;
+
+
+/***/ }),
+/* 38 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.RolesGuard = void 0;
+const common_1 = __webpack_require__(2);
+const core_1 = __webpack_require__(1);
+const roles_decorator_1 = __webpack_require__(37);
+let RolesGuard = class RolesGuard {
+    constructor(reflector) {
+        this.reflector = reflector;
+    }
+    canActivate(context) {
+        const requiredRoles = this.reflector.getAllAndOverride(roles_decorator_1.ROLES_KEY, [context.getHandler(), context.getClass()]);
+        if (!requiredRoles) {
+            return true;
+        }
+        const { user } = context.switchToHttp().getRequest();
+        return requiredRoles.some((role) => user.role === role);
+    }
+};
+exports.RolesGuard = RolesGuard;
+exports.RolesGuard = RolesGuard = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [typeof (_a = typeof core_1.Reflector !== "undefined" && core_1.Reflector) === "function" ? _a : Object])
+], RolesGuard);
+
+
+/***/ }),
+/* 39 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__webpack_require__(40), exports);
+__exportStar(__webpack_require__(42), exports);
+__exportStar(__webpack_require__(43), exports);
+
+
+/***/ }),
+/* 40 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.LoginDto = exports.UpdateUserDto = exports.CreateUserDto = void 0;
+const class_validator_1 = __webpack_require__(41);
+const swagger_1 = __webpack_require__(3);
+class CreateUserDto {
+}
+exports.CreateUserDto = CreateUserDto;
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: "user@example.com" }),
+    (0, class_validator_1.IsEmail)(),
+    __metadata("design:type", String)
+], CreateUserDto.prototype, "email", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: "password123" }),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.MinLength)(6),
+    __metadata("design:type", String)
+], CreateUserDto.prototype, "password", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: "John Doe" }),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], CreateUserDto.prototype, "name", void 0);
+__decorate([
+    (0, swagger_1.ApiPropertyOptional)({ example: "+1234567890" }),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], CreateUserDto.prototype, "phone", void 0);
+__decorate([
+    (0, swagger_1.ApiPropertyOptional)({ example: "123 Main St" }),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], CreateUserDto.prototype, "address", void 0);
+class UpdateUserDto {
+}
+exports.UpdateUserDto = UpdateUserDto;
+__decorate([
+    (0, swagger_1.ApiPropertyOptional)({ example: "John Doe" }),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], UpdateUserDto.prototype, "name", void 0);
+__decorate([
+    (0, swagger_1.ApiPropertyOptional)({ example: "+1234567890" }),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], UpdateUserDto.prototype, "phone", void 0);
+__decorate([
+    (0, swagger_1.ApiPropertyOptional)({ example: "123 Main St" }),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], UpdateUserDto.prototype, "address", void 0);
+__decorate([
+    (0, swagger_1.ApiPropertyOptional)({ example: "admin" }),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], UpdateUserDto.prototype, "role", void 0);
+class LoginDto {
+}
+exports.LoginDto = LoginDto;
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: "user@example.com" }),
+    (0, class_validator_1.IsEmail)(),
+    __metadata("design:type", String)
+], LoginDto.prototype, "email", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: "password123" }),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], LoginDto.prototype, "password", void 0);
+
+
+/***/ }),
+/* 41 */
+/***/ ((module) => {
+
+module.exports = require("class-validator");
+
+/***/ }),
+/* 42 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UpdateProductDto = exports.CreateProductDto = void 0;
+const class_validator_1 = __webpack_require__(41);
+const swagger_1 = __webpack_require__(3);
+class CreateProductDto {
+}
+exports.CreateProductDto = CreateProductDto;
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: "Modern Sofa" }),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], CreateProductDto.prototype, "name", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: "A comfortable modern sofa" }),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], CreateProductDto.prototype, "description", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: 599.99 }),
+    (0, class_validator_1.IsNumber)(),
+    (0, class_validator_1.Min)(0),
+    __metadata("design:type", Number)
+], CreateProductDto.prototype, "price", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: 50 }),
+    (0, class_validator_1.IsNumber)(),
+    (0, class_validator_1.Min)(0),
+    __metadata("design:type", Number)
+], CreateProductDto.prototype, "stock", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: "furniture" }),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], CreateProductDto.prototype, "category", void 0);
+__decorate([
+    (0, swagger_1.ApiPropertyOptional)({ example: ["https://example.com/sofa.jpg"] }),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsArray)(),
+    (0, class_validator_1.IsString)({ each: true }),
+    __metadata("design:type", Array)
+], CreateProductDto.prototype, "images", void 0);
+class UpdateProductDto {
+}
+exports.UpdateProductDto = UpdateProductDto;
+__decorate([
+    (0, swagger_1.ApiPropertyOptional)({ example: "Modern Sofa" }),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], UpdateProductDto.prototype, "name", void 0);
+__decorate([
+    (0, swagger_1.ApiPropertyOptional)({ example: "A comfortable modern sofa" }),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], UpdateProductDto.prototype, "description", void 0);
+__decorate([
+    (0, swagger_1.ApiPropertyOptional)({ example: 599.99 }),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsNumber)(),
+    (0, class_validator_1.Min)(0),
+    __metadata("design:type", Number)
+], UpdateProductDto.prototype, "price", void 0);
+__decorate([
+    (0, swagger_1.ApiPropertyOptional)({ example: 50 }),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsNumber)(),
+    (0, class_validator_1.Min)(0),
+    __metadata("design:type", Number)
+], UpdateProductDto.prototype, "stock", void 0);
+__decorate([
+    (0, swagger_1.ApiPropertyOptional)({ example: "furniture" }),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], UpdateProductDto.prototype, "category", void 0);
+__decorate([
+    (0, swagger_1.ApiPropertyOptional)({ example: ["https://example.com/sofa.jpg"] }),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsArray)(),
+    (0, class_validator_1.IsString)({ each: true }),
+    __metadata("design:type", Array)
+], UpdateProductDto.prototype, "images", void 0);
+__decorate([
+    (0, swagger_1.ApiPropertyOptional)({ example: true }),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", Boolean)
+], UpdateProductDto.prototype, "isActive", void 0);
+
+
+/***/ }),
+/* 43 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var _a;
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UpdateOrderDto = exports.CreateOrderDto = exports.OrderItemDto = void 0;
+const class_validator_1 = __webpack_require__(41);
+const class_transformer_1 = __webpack_require__(44);
+const swagger_1 = __webpack_require__(3);
+const order_interface_1 = __webpack_require__(36);
+class OrderItemDto {
+}
+exports.OrderItemDto = OrderItemDto;
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: "uuid-product-id" }),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], OrderItemDto.prototype, "productId", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: "Modern Sofa" }),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], OrderItemDto.prototype, "productName", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: 2 }),
+    (0, class_validator_1.IsNumber)(),
+    (0, class_validator_1.Min)(1),
+    __metadata("design:type", Number)
+], OrderItemDto.prototype, "quantity", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: 599.99 }),
+    (0, class_validator_1.IsNumber)(),
+    (0, class_validator_1.Min)(0),
+    __metadata("design:type", Number)
+], OrderItemDto.prototype, "price", void 0);
+class CreateOrderDto {
+}
+exports.CreateOrderDto = CreateOrderDto;
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: "uuid-user-id" }),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], CreateOrderDto.prototype, "userId", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ type: [OrderItemDto] }),
+    (0, class_validator_1.IsArray)(),
+    (0, class_validator_1.ValidateNested)({ each: true }),
+    (0, class_transformer_1.Type)(() => OrderItemDto),
+    __metadata("design:type", Array)
+], CreateOrderDto.prototype, "items", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: "123 Main St, City, Country" }),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], CreateOrderDto.prototype, "shippingAddress", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: "credit_card" }),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], CreateOrderDto.prototype, "paymentMethod", void 0);
+class UpdateOrderDto {
+}
+exports.UpdateOrderDto = UpdateOrderDto;
+__decorate([
+    (0, swagger_1.ApiPropertyOptional)({ enum: order_interface_1.OrderStatus }),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsEnum)(order_interface_1.OrderStatus),
+    __metadata("design:type", typeof (_a = typeof order_interface_1.OrderStatus !== "undefined" && order_interface_1.OrderStatus) === "function" ? _a : Object)
+], UpdateOrderDto.prototype, "status", void 0);
+__decorate([
+    (0, swagger_1.ApiPropertyOptional)({ example: "123 Main St, City, Country" }),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], UpdateOrderDto.prototype, "shippingAddress", void 0);
+__decorate([
+    (0, swagger_1.ApiPropertyOptional)({ example: "credit_card" }),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], UpdateOrderDto.prototype, "paymentMethod", void 0);
+
+
+/***/ }),
+/* 44 */
+/***/ ((module) => {
+
+module.exports = require("class-transformer");
+
+/***/ }),
+/* 45 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UserRole = void 0;
+var UserRole;
+(function (UserRole) {
+    UserRole["SUPER_ADMIN"] = "super_admin";
+    UserRole["ADMIN"] = "admin";
+    UserRole["STAFF"] = "staff";
+    UserRole["CUSTOMER"] = "customer";
+})(UserRole || (exports.UserRole = UserRole = {}));
+
+
+/***/ }),
+/* 46 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -727,9 +1460,9 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ProductsModule = void 0;
 const common_1 = __webpack_require__(2);
 const typeorm_1 = __webpack_require__(6);
-const products_service_1 = __webpack_require__(26);
-const products_controller_1 = __webpack_require__(28);
-const product_entity_1 = __webpack_require__(27);
+const products_service_1 = __webpack_require__(47);
+const products_controller_1 = __webpack_require__(49);
+const product_entity_1 = __webpack_require__(48);
 let ProductsModule = class ProductsModule {
 };
 exports.ProductsModule = ProductsModule;
@@ -744,7 +1477,7 @@ exports.ProductsModule = ProductsModule = __decorate([
 
 
 /***/ }),
-/* 26 */
+/* 47 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -766,7 +1499,7 @@ exports.ProductsService = void 0;
 const common_1 = __webpack_require__(2);
 const typeorm_1 = __webpack_require__(6);
 const typeorm_2 = __webpack_require__(14);
-const product_entity_1 = __webpack_require__(27);
+const product_entity_1 = __webpack_require__(48);
 let ProductsService = class ProductsService {
     constructor(productsRepository) {
         this.productsRepository = productsRepository;
@@ -775,7 +1508,7 @@ let ProductsService = class ProductsService {
         return this.productsRepository.find({ where: { isActive: true } });
     }
     async findOne(id) {
-        const product = await this.productsRepository.findOne({ where: { id } });
+        const product = await this.productsRepository.findOne({ where: { id: id } });
         if (!product) {
             throw new common_1.NotFoundException(`Product with ID ${id} not found`);
         }
@@ -809,7 +1542,7 @@ exports.ProductsService = ProductsService = __decorate([
 
 
 /***/ }),
-/* 27 */
+/* 48 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -830,9 +1563,14 @@ let Product = class Product {
 };
 exports.Product = Product;
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
-    __metadata("design:type", String)
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    __metadata("design:type", Number)
 ], Product.prototype, "id", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ unique: true }),
+    (0, typeorm_1.Generated)("uuid"),
+    __metadata("design:type", String)
+], Product.prototype, "uuid", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
@@ -875,7 +1613,7 @@ exports.Product = Product = __decorate([
 
 
 /***/ }),
-/* 28 */
+/* 49 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -896,7 +1634,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ProductsController = void 0;
 const common_1 = __webpack_require__(2);
 const swagger_1 = __webpack_require__(3);
-const products_service_1 = __webpack_require__(26);
+const products_service_1 = __webpack_require__(47);
 let ProductsController = class ProductsController {
     constructor(productsService) {
         this.productsService = productsService;
@@ -933,7 +1671,7 @@ __decorate([
     (0, swagger_1.ApiOperation)({ summary: "Get product by ID" }),
     __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "findOne", null);
 __decorate([
@@ -958,7 +1696,7 @@ __decorate([
     __param(0, (0, common_1.Param)("id")),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:paramtypes", [Number, Object]),
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "update", null);
 __decorate([
@@ -966,7 +1704,7 @@ __decorate([
     (0, swagger_1.ApiOperation)({ summary: "Delete product" }),
     __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "remove", null);
 exports.ProductsController = ProductsController = __decorate([
@@ -977,7 +1715,7 @@ exports.ProductsController = ProductsController = __decorate([
 
 
 /***/ }),
-/* 29 */
+/* 50 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -991,9 +1729,9 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.OrdersModule = void 0;
 const common_1 = __webpack_require__(2);
 const typeorm_1 = __webpack_require__(6);
-const orders_service_1 = __webpack_require__(30);
-const orders_controller_1 = __webpack_require__(32);
-const order_entity_1 = __webpack_require__(31);
+const orders_service_1 = __webpack_require__(51);
+const orders_controller_1 = __webpack_require__(53);
+const order_entity_1 = __webpack_require__(52);
 const users_module_1 = __webpack_require__(23);
 let OrdersModule = class OrdersModule {
 };
@@ -1009,7 +1747,7 @@ exports.OrdersModule = OrdersModule = __decorate([
 
 
 /***/ }),
-/* 30 */
+/* 51 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -1031,7 +1769,7 @@ exports.OrdersService = void 0;
 const common_1 = __webpack_require__(2);
 const typeorm_1 = __webpack_require__(6);
 const typeorm_2 = __webpack_require__(14);
-const order_entity_1 = __webpack_require__(31);
+const order_entity_1 = __webpack_require__(52);
 let OrdersService = class OrdersService {
     constructor(ordersRepository) {
         this.ordersRepository = ordersRepository;
@@ -1041,7 +1779,7 @@ let OrdersService = class OrdersService {
     }
     async findOne(id) {
         const order = await this.ordersRepository.findOne({
-            where: { id },
+            where: { id: id },
             relations: ["user"],
         });
         if (!order) {
@@ -1078,7 +1816,7 @@ exports.OrdersService = OrdersService = __decorate([
 
 
 /***/ }),
-/* 31 */
+/* 52 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -1100,12 +1838,17 @@ let Order = class Order {
 };
 exports.Order = Order;
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
-    __metadata("design:type", String)
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    __metadata("design:type", Number)
 ], Order.prototype, "id", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.Column)({ unique: true }),
+    (0, typeorm_1.Generated)("uuid"),
     __metadata("design:type", String)
+], Order.prototype, "uuid", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
 ], Order.prototype, "userId", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => user_entity_1.User),
@@ -1146,7 +1889,7 @@ exports.Order = Order = __decorate([
 
 
 /***/ }),
-/* 32 */
+/* 53 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -1167,7 +1910,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.OrdersController = void 0;
 const common_1 = __webpack_require__(2);
 const swagger_1 = __webpack_require__(3);
-const orders_service_1 = __webpack_require__(30);
+const orders_service_1 = __webpack_require__(51);
 const jwt_auth_guard_1 = __webpack_require__(18);
 let OrdersController = class OrdersController {
     constructor(ordersService) {
@@ -1209,7 +1952,7 @@ __decorate([
     (0, swagger_1.ApiOperation)({ summary: "Get order by ID" }),
     __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], OrdersController.prototype, "findOne", null);
 __decorate([
@@ -1219,7 +1962,7 @@ __decorate([
     (0, swagger_1.ApiOperation)({ summary: "Get orders by user" }),
     __param(0, (0, common_1.Param)("userId")),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], OrdersController.prototype, "findByUser", null);
 __decorate([
@@ -1240,7 +1983,7 @@ __decorate([
     __param(0, (0, common_1.Param)("id")),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:paramtypes", [Number, Object]),
     __metadata("design:returntype", void 0)
 ], OrdersController.prototype, "update", null);
 __decorate([
@@ -1250,7 +1993,7 @@ __decorate([
     (0, swagger_1.ApiOperation)({ summary: "Delete order" }),
     __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], OrdersController.prototype, "remove", null);
 exports.OrdersController = OrdersController = __decorate([

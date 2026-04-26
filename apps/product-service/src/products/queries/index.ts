@@ -3,7 +3,7 @@ export class GetAllProductsQuery {
 }
 
 export class GetProductByIdQuery {
-  constructor(public readonly id: string) {}
+  constructor(public readonly id: number) {}
 }
 
 export class GetProductsByCategoryQuery {

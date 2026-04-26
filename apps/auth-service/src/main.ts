@@ -2,7 +2,7 @@ import { NestFactory } from "@nestjs/core";
 import { ValidationPipe, Logger } from "@nestjs/common";
 import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
 import { AppModule } from "./app.module";
-import { AllExceptionsFilter, LoggingInterceptor } from "@furniro/common";
+import { AllExceptionsFilter, LoggingInterceptor, TransformInterceptor } from "@furniro/common";
 
 async function bootstrap() {
   const logger = new Logger("AuthService");
@@ -24,7 +24,7 @@ async function bootstrap() {
   );
 
   app.useGlobalFilters(new AllExceptionsFilter());
-  app.useGlobalInterceptors(new LoggingInterceptor());
+  app.useGlobalInterceptors(new LoggingInterceptor(), new TransformInterceptor());
 
   const config = new DocumentBuilder()
     .setTitle("Furniro Auth Service")

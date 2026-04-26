@@ -1,13 +1,14 @@
 export interface IOrderItem {
-  productId: string;
+  productId: number;
   productName: string;
   quantity: number;
   price: number;
 }
 
 export interface IOrder {
-  id: string;
-  userId: string;
+  id: number;
+  uuid: string;
+  userId: number;
   user?: any;
   totalAmount: number;
   status: OrderStatus;
@@ -19,7 +20,7 @@ export interface IOrder {
 }
 
 export interface IOrderCreate {
-  userId: string;
+  userId: number;
   items: IOrderItem[];
   shippingAddress: string;
   paymentMethod: string;

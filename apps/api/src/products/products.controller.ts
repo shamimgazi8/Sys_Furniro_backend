@@ -23,7 +23,7 @@ export class ProductsController {
 
   @Get(":id")
   @ApiOperation({ summary: "Get product by ID" })
-  findOne(@Param("id") id: string) {
+  findOne(@Param("id") id: number) {
     return this.productsService.findOne(id);
   }
 
@@ -41,13 +41,13 @@ export class ProductsController {
 
   @Patch(":id")
   @ApiOperation({ summary: "Update product" })
-  update(@Param("id") id: string, @Body() updateProductDto: any) {
+  update(@Param("id") id: number, @Body() updateProductDto: any) {
     return this.productsService.update(id, updateProductDto);
   }
 
   @Delete(":id")
   @ApiOperation({ summary: "Delete product" })
-  remove(@Param("id") id: string) {
+  remove(@Param("id") id: number) {
     return this.productsService.remove(id);
   }
 }

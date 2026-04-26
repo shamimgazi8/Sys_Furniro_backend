@@ -3,9 +3,9 @@ export class GetAllOrdersQuery {
 }
 
 export class GetOrderByIdQuery {
-  constructor(public readonly id: string) {}
+  constructor(public readonly id: number) {}
 }
 
 export class GetOrdersByUserQuery {
-  constructor(public readonly userId: string) {}
+  constructor(public readonly userId: number) {}
 }

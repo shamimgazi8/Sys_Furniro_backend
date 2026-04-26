@@ -14,7 +14,11 @@ export class AuthService {
     return this.queryBus.execute(new ValidateUserQuery(email, pass));
   }
 
-  async login(user: any) {
+  async login(loginDto: any) {
+    const user = await this.validateUser(loginDto.email, loginDto.password);
+    if (!user) {
+      throw new UnauthorizedException("Invalid email or password");
+    }
     return this.commandBus.execute(new LoginCommand(user));
   }
 

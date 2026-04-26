@@ -26,7 +26,7 @@ export class ProductsController {
   }
 
   @Get(":id")
-  async findOne(@Param("id") id: string) {
+  async findOne(@Param("id") id: number) {
     const response = await this.client.get(`/api/products/${id}`);
     return response.data;
   }
@@ -49,7 +49,7 @@ export class ProductsController {
 
   @Patch(":id")
   async update(
-    @Param("id") id: string,
+    @Param("id") id: number,
     @Body() body: any,
     @Headers("authorization") auth: string,
   ) {
@@ -61,7 +61,7 @@ export class ProductsController {
 
   @Delete(":id")
   async remove(
-    @Param("id") id: string,
+    @Param("id") id: number,
     @Headers("authorization") auth: string,
   ) {
     const response = await this.client.delete(`/api/products/${id}`, {
